@@ -44,6 +44,21 @@ server.get('/api/users/:id', (req, res) => {
         })
 })
 
+//Post request to create a new user
+server.post('/api/users', (req, res) => {
+    const newUser = req.body;
+    db.insert(newUser)
+        .then(user => {
+            res.status(201).json(user);
+        })
+        .catch(err => {
+            res.status(500).json({
+                err: err,
+                message: 'There was an error while saving the user to the database'
+            });
+        });
+})
+
 server.listen(4000, () => {
     console.log('server is running on port 4000')
 })
