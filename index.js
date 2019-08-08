@@ -47,7 +47,6 @@ server.get('/api/users/:id', (req, res) => {
 //Post request to create a new user
 server.post('/api/users', (req, res) => {
     const newUser = req.body;
-    console.log("new user", newUser.bio)
 
     if (!newUser.bio || !newUser.name) {
         res.status(400).json({
